@@ -7,6 +7,7 @@ const logger = require('./middleware/logger')
 
 app.use(express.json()); 
 app.use(logger);
+
 function start(port) {
     app.listen(port, ()=> console.log(`will run on ${port}`))
 }
@@ -15,8 +16,8 @@ app.get('/', (req, res)=> {
 });
 app.post('/bad', (req,res)=> {
     let num = 1;
-    num.forEach(num=> 
-    console.log(num));
+    num.forEach(item=> 
+    console.log(item));
     res.send('sorry bad req !!!!! ');
 })
 
@@ -36,8 +37,9 @@ app.get('/person',person('samah'),(req,res)=>{
 app.get('/throwing-error', person(2) , (req, res)=> {
     res.send(`The error is  ${req.personName}`);
 });
-app.use(errorHandler);
+
 app.use('*', notFoundHandler);
+app.use(errorHandler);
 
 
 module.exports = {
