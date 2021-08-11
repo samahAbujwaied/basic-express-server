@@ -27,16 +27,14 @@ app.get('/data', (req, res)=> {
        name: "Samah", 
     });
 });
-app.get('/person',person('samah'),(req,res)=>{
+app.get('/person',person,(req,res)=>{
     res.json({
         message:'person route response',
         name:req.personName
         
     })
 });
-app.get('/throwing-error', person(2) , (req, res)=> {
-    res.send(`The error is  ${req.personName}`);
-});
+
 
 app.use('*', notFoundHandler);
 app.use(errorHandler);
