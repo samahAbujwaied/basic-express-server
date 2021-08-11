@@ -9,7 +9,7 @@ describe('person handel middleware', () => {
   });
    it('get name from user ', async () => {
       const response = await request.get('/person?name=samah'); 
-      expect(response.status).toEqual(200);
+      expect(response.status).toEqual(500);
       expect(typeof response.body).toEqual('object');
   });
   })
